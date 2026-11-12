@@ -51,6 +51,15 @@
   .lang button.active{background:var(--teal);color:#fff}
   .shop-mini{background:var(--navy);color:#fff !important;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:16px}
   @media (prefers-color-scheme: dark){.shop-mini{background:var(--teal);color:#08201f !important}}
+  /* mobile: slim one-row header so the big headline sits at the top */
+  @media(max-width:700px){
+    .topbar-in{flex-wrap:nowrap;gap:10px;padding:10px 0}
+    .nav{display:none}
+    .shop-mini{display:none}
+    .hero{padding:20px 0 24px}
+    h1{font-size:32px;margin:12px 0 10px}
+    .lede{font-size:18px}
+  }
   /* hero */
   .hero{padding:44px 0 30px}
   .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:center}
