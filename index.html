@@ -33,6 +33,8 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
+  /* keep controls clear of the sticky top bar and mobile bottom bar when scrolled into view */
+  main a,main button,main summary,main input,main select,main textarea,main section,main h2{scroll-margin-top:84px;scroll-margin-bottom:100px}
   body{margin:0;font-family:"Outfit",system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.6}
   img{max-width:100%;display:block}
   a{color:var(--teal)}
@@ -56,9 +58,10 @@
     .topbar-in{flex-wrap:nowrap;gap:10px;padding:10px 0}
     .nav{display:none}
     .shop-mini{display:none}
-    .hero{padding:20px 0 24px}
-    h1{font-size:32px;margin:12px 0 10px}
-    .lede{font-size:18px}
+    .hero{padding:14px 0 22px}
+    h1{font-size:30px;margin:10px 0 8px}
+    .lede{font-size:17.5px;line-height:1.55;margin-bottom:6px}
+    .cta-row{margin:16px 0 12px}
   }
   /* hero */
   .hero{padding:44px 0 30px}
@@ -128,6 +131,23 @@
   .hook-card .a{margin:0;color:var(--muted);font-size:16.5px;line-height:1.6}
   .hook-card .a::before{content:"A: ";font-weight:700;color:var(--ink)}
   .hook-tag{display:inline-block;background:var(--chip);color:var(--teal-dark);font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+  /* story / testimonial */
+  .story-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;align-items:stretch}
+  @media(max-width:760px){.story-grid{grid-template-columns:1fr}}
+  .quote-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .stars{color:var(--accent);font-size:22px;letter-spacing:4px;line-height:1;margin-bottom:14px}
+  .quote-text{font-family:"Marcellus",serif;font-size:clamp(21px,2.6vw,26px);line-height:1.45;color:var(--ink);margin:0 0 16px}
+  .quote-by{font-weight:700;color:var(--ink);margin:0;font-size:17px}
+  .quote-source{color:var(--muted);font-size:15px;margin:2px 0 16px}
+  .quote-watch{margin-top:auto;font-weight:700;text-decoration:none;color:var(--teal);display:inline-flex;align-items:center;gap:7px}
+  .quote-watch:hover{text-decoration:underline}
+  .stat-stack{display:grid;grid-template-rows:1fr 1fr;gap:16px}
+  @media(max-width:760px){.stat-stack{grid-template-rows:none;grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.stat-stack{grid-template-columns:1fr}}
+  .stat-card{background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:center}
+  .stat-num{font-family:"Marcellus",serif;font-size:clamp(36px,4.5vw,46px);line-height:1;color:var(--teal-dark);margin:0 0 6px}
+  .stat-desc{color:var(--muted);font-size:16.5px;line-height:1.5;margin:0}
+  .story-note{font-size:14.5px;color:var(--muted);margin:14px 0 0}
   /* faq */
   details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:12px}
   summary{cursor:pointer;font-weight:700;font-size:18px;padding:14px 0}
@@ -222,6 +242,35 @@
       </div>
     </div>
   </div>
+
+  <!-- USER STORY — from Healy World's official site -->
+  <section id="story" style="padding-top:10px;padding-bottom:10px">
+    <div class="wrap">
+      <span class="hook-tag" data-i18n="storyTag">From Healy World’s official site</span>
+      <h2 data-i18n="storyTitle">Why users love Healy</h2>
+      <p class="sub" data-i18n="storySub">In their own words — one user’s story, and what thousands of users told Healy World in a global survey.</p>
+      <div class="story-grid">
+        <article class="quote-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="quote-text" data-i18n="storyQuote">“All of a sudden I have more energy, more patience, more compassion and more time to do the things that I love.”</p>
+          <p class="quote-by" data-i18n="storyBy">Simone Nofel — Healy user</p>
+          <p class="quote-source" data-i18n="storySource">From Healy World’s official site</p>
+          <a class="quote-watch" href="https://www.youtube.com/shorts/o_WLvTKMR3M" target="_blank" rel="noopener" data-i18n="storyWatch">▶ Watch her story</a>
+        </article>
+        <div class="stat-stack">
+          <div class="stat-card">
+            <p class="stat-num">92%</p>
+            <p class="stat-desc" data-i18n="stat1d">of users would recommend the Healy to others</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-num">80%</p>
+            <p class="stat-desc" data-i18n="stat2d">of users are “very satisfied” with the Healy</p>
+          </div>
+        </div>
+      </div>
+      <p class="story-note" data-i18n="storyNote">Based on a global market survey with over 5,000 participants (Healy World).</p>
+    </div>
+  </section>
 
   <!-- HOOK QUESTIONS — quick answers up top -->
   <section id="hooks" style="padding-top:10px;padding-bottom:10px">
@@ -499,6 +548,16 @@ var I18N = {
     trust1t: "面向全球", trust1d: "通过 Healy 官方商店下单,结账时会显示您所在地区的版本与价格。",
     trust2t: "可穿戴 + 应用操作", trust2d: "把设备别在衣服上,在应用里选择程序,就可以继续您的一天。",
     trust3t: "真人协助", trust3d: "通过本页链接下单,您的购买会关联入门协助——可使用英文或中文。",
+    storyTag: "来自 Healy World 官方网站",
+    storyTitle: "用户为什么喜爱 Healy",
+    storySub: "听听他们自己的话——一位用户的故事,以及数千名用户在 Healy World 全球调查中的反馈。",
+    storyQuote: "“突然之间，我有了更多的精力、更多的耐心、更多的同情心，也有了更多时间去做我喜欢的事。”",
+    storyBy: "Simone Nofel — Healy 用户",
+    storySource: "来自 Healy World 官方网站",
+    storyWatch: "▶ 观看她的故事",
+    stat1d: "的用户愿意把 Healy 推荐给他人",
+    stat2d: "的用户对 Healy“非常满意”",
+    storyNote: "基于一项有 5,000 多名参与者的全球市场调查(Healy World)。",
     hooksTag: "从这里开始 · 60 秒解答",
     hooksTitle: "第一次听说 Healy?大家最先问的就是这些问题。",
     hooksSub: "吸引人的关键问题,配上直截了当的答案——不夸张,不做医疗承诺。如果您只看一节,就看这一节。",
